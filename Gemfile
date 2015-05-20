@@ -48,8 +48,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
   gem 'ffaker'
+  gem 'fuubar'
 end
 
 gem 'thin'

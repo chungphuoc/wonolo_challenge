@@ -1,0 +1,15 @@
+<div class="col-sm-6">
+  <%= form_tag(search_result_homes_path, method: :get) do %>
+    <h2 class="form-signin-heading">Search for Instagram posts in a location.</h2>
+    <label for="inputEmail">Latitude</label>
+    <%= text_field_tag 'latitude', '', placeholder: 'ex: 10.790261', class: "form-control", required: '', autofocus: '', id: 'inputLat' %>
+    <br>
+    <label for="inputPassword">Longitude</label>
+    <%= text_field_tag 'longitude', '', placeholder: 'ex: 106.658642', class: "form-control", required: '', id: 'inputLong' %>
+    <br>
+    <label for="inputPassword">Radius</label>
+    <%= text_field_tag 'distance', '', placeholder: '1000', class: "form-control", required: '', id: 'inputDistance' %>
+    <br>
+    <%= submit_tag 'Search', class: 'btn btn-primary'%>
+  <% end %>
+</div>
