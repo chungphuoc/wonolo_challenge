@@ -22,7 +22,7 @@ RSpec.describe HomesController, :type => :controller do
     end
 
     it "renders the search_result template" do
-      get :search_result
+      get :search_result, latitude: 10.21345, longitude: 106.658642, distance: 1000
       expect(response).to render_template("search_result")
     end
   end

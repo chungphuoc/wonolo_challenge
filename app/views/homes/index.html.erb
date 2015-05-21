@@ -7,7 +7,7 @@
     <label for="inputPassword">Longitude</label>
     <%= text_field_tag 'longitude', '', placeholder: 'ex: 106.658642', class: "form-control", required: '', id: 'inputLong' %>
     <br>
-    <label for="inputPassword">Radius</label>
+    <label for="inputPassword">Radius(<i>Default is 1km (distance=1000), max distance is 5km.</i>)</label>
     <%= text_field_tag 'distance', '', placeholder: '1000', class: "form-control", required: '', id: 'inputDistance' %>
     <br>
     <%= submit_tag 'Search', class: 'btn btn-primary'%>

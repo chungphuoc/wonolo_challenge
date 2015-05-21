@@ -1,3 +1,21 @@
-<div class="col-sm-12">
-  <%= @result %>
+<%= link_to 'Back to Search Form',  root_path, class: 'btn btn-primary'%>
+<hr>
+<div class="col-xs-12">
+  <div class="row col-xs-12">
+    <% @result.each_with_index do |data, index| %>
+      <div class="row featurette">
+        <div class="col-md-5">
+          <%= link_to image_tag(data['images']['low_resolution']['url'], class: "featurette-image img-responsive center-block", height: '500', width: '500', data: {holder_rendered: true}), data['link'], target: '_blank'%>
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading"><%= image_tag(data['user']['profile_picture'], class: "img-circle", height: '64', width: '64')%><%= link_to data['user']['username'], "https://instagram.com/#{data['user']['username']}", target: '_blank'%></h2>
+          <span class="llLocationLink"><i>at:</i> <%= data['location']['name']%></span>
+          <p class="lead"><%= data['caption']['text'] if data['caption'].present? %></p>
+          <p><%= link_to 'View details »', data['link'] , class: 'btn btn-default', target: '_blank' %></p>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+  <%= paginate @result, param_name: :page %>
 </div>

@@ -4,7 +4,7 @@ require 'json'
 require 'typhoeus'
 class API
   def self.call_api(api_path, method, params={})
-    api_base_url = 'https://api.instagram.com/v1/media/'
+    api_base_url = INSTAGRAM_API_URL
     req = Typhoeus::Request.new(api_base_url + api_path,
       :method => method,
       :timeout => 15000,
