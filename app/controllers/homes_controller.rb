@@ -6,6 +6,7 @@ class HomesController < ApplicationController
   def search_result
     result = call_api(params)
     @result = Kaminari.paginate_array(result['data']).page(params[:page] || 1).per(5)
+    render 'not_found' if @result.count == 0
     @map_data = create_map_data(@result)
     render 'normal_view' if params[:view] == 'normal'
   end
