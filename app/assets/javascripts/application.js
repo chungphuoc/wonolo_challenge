@@ -16,4 +16,5 @@
 //= require bootstrap.min
 //= require underscore
 //= require gmaps/google
+//= require homes.coffee
 //= require_tree .
