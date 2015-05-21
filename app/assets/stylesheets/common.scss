@@ -12,3 +12,14 @@
   font-weight: 600;
   text-overflow: ellipsis;
 }
+
+.carousel {
+  padding: 10px;     /* Shows as a border around the carousel */
+  text-align: center;
+}
+#map img {
+  max-width: none;
+}
+#map label {
+  width: auto; display:inline;
+}

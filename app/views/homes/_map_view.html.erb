@@ -1,0 +1,6 @@
+<hr>
+<%= hidden_field_tag :coordinates, nil, data: {value: @map_data.to_json}%>
+<div style='width: 100%;'>
+  <div id="map" style='width: 100%; height: 500px;' class="gmaps4rails_map"></div>
+</div>
+<script src="/assets/homes.coffee" type="text/javascript"></script>

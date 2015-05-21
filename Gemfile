@@ -57,3 +57,4 @@ end
 gem 'thin'
 gem 'typhoeus'
 gem 'kaminari'
+gem 'gmaps4rails'

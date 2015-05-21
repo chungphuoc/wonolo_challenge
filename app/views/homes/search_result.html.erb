@@ -1,21 +1,39 @@
 <%= link_to 'Back to Search Form',  root_path, class: 'btn btn-primary'%>
+<%= link_to 'Normal view', search_result_homes_path(request.params.merge(view: 'normal')), class: 'btn btn-primary'%>
 <hr>
 <div class="col-xs-12">
-  <div class="row col-xs-12">
-    <% @result.each_with_index do |data, index| %>
-      <div class="row featurette">
-        <div class="col-md-5">
-          <%= link_to image_tag(data['images']['low_resolution']['url'], class: "featurette-image img-responsive center-block", height: '500', width: '500', data: {holder_rendered: true}), data['link'], target: '_blank'%>
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <% @result.each_with_index do |data, index| %>
+        <% class_name = index == 0 ? 'active' : '' %>
+        <li data-target="#carousel-example-generic" data-slide-to=<%= data['user']['id']%> class="<%= class_name%>"></li>
+      <% end %>
+      <!-- <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <% @result.each_with_index do |data, index| %>
+        <% class_name = index == 0 ? 'active' : '' %>
+        <div class="item <%= class_name %>">
+          <%= link_to image_tag(data['images']['standard_resolution']['url'], class: "featurette-image img-responsive center-block", height: '400', width: '640', data: {holder_rendered: true}), data['link'], target: '_blank'%>
+          <div class="carousel-caption pull-right">
+            <h3><%= data['caption']['text'] if data['caption'].present? %></h3>
+          </div>
         </div>
-        <div class="col-md-7">
-          <h2 class="featurette-heading"><%= image_tag(data['user']['profile_picture'], class: "img-circle", height: '64', width: '64')%><%= link_to data['user']['username'], "https://instagram.com/#{data['user']['username']}", target: '_blank'%></h2>
-          <span class="llLocationLink"><i>at:</i> <%= data['location']['name']%></span>
-          <p class="lead"><%= data['caption']['text'] if data['caption'].present? %></p>
-          <p><%= link_to 'View details »', data['link'] , class: 'btn btn-default', target: '_blank' %></p>
-        </div>
-      </div>
-      <hr>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div> <!-- Carousel -->
+  <%= render partial: 'map_view'%>
   <%= paginate @result, param_name: :page %>
 </div>
