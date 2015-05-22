@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-7">
           <h2 class="featurette-heading"><%= image_tag(data['user']['profile_picture'], class: "img-circle", height: '64', width: '64')%><%= link_to data['user']['username'], "https://instagram.com/#{data['user']['username']}", target: '_blank'%></h2>
-          <span class="llLocationLink"><i>at:</i> <%= "#{data['location']['name']} #{data['location']['latitude']} #{data['location']['longitude']}"%></span>
+          <span class="llLocationLink"><i>at:</i> <%= "#{data['location']['name']}"%></span>
           <p class="lead"><%= data['caption']['text'] if data['caption'].present? %></p>
           <p><%= link_to 'View details »', data['link'] , class: 'btn btn-default', target: '_blank' %></p>
         </div>

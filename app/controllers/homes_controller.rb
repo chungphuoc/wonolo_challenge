@@ -32,9 +32,10 @@ private
   def create_map_data(data)
     result = Array.new
     data.each do |e|
+      caption = e['caption'].present? ? e['caption']['text'] : ""
       result << {lat: e['location']['latitude'],
                  lng: e['location']['longitude'],
-                 infowindow: "<a href=#{e['link']} target='_blank'><img src=#{e['images']['standard_resolution']['url']} width='190' height='100'></a> #{e['user']['username']}" }
+                 infowindow: "<a href=#{e['link']} target='_blank'><img src=#{e['images']['standard_resolution']['url']} width='200' height='150'></a><br> #{caption}" }
     end
     result
   end
